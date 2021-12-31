@@ -12,6 +12,7 @@ class WebStateModel {
 
   @Published var canGoBack = false
   @Published var canGoForward = false
+  
   @Published var submittedUrl: String?
   @Published var currentUrl: String?
 }
