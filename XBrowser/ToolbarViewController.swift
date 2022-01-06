@@ -20,6 +20,7 @@ class ToolbarViewController: UIViewController {
     @IBOutlet weak var addressContainerView: UIView!
     
     var cancellables = Set<AnyCancellable>()
+    weak var delegate: WebViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,16 +40,38 @@ class ToolbarViewController: UIViewController {
         viewModel.$url
             .assign(to: \.text, on: addressTextField)
             .store(in: &cancellables)
+        
+        viewModel.$url
+            .sink(receiveValue: { [self] result in
+                guard let url = result,
+                      let _URL = URL(string: url)
+                else { return }
+                let hostURL = _URL.host
+                let faviconURL = "http://\(hostURL ?? "")/favicon.ico"
+                self.faviconImageView.loadImage(assetOrUrl: faviconURL)
+            })
+            .store(in: &cancellables)
     }
     
     @IBAction func didTapButton(_ sender: UIButton) {
         switch sender {
         case backButton:
+            delegate?.didGoback()
             break
         case forwardButton:
+            delegate?.didGoForward()
             break
         default:
             break
         }
+    }
+}
+
+//MARK: UITextFieldDelegate
+extension ToolbarViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        delegate?.goTextUrl(textField.text)
+        self.view.endEditing(true)
+        return true
     }
 }

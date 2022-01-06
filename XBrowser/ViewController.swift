@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         case let viewController as WebViewController:
             self.webViewController = viewController
             self.webViewController.viewModel = WebViewModel(model: webState)
+            self.toolbarViewController.delegate = viewController
         case let viewController as ToolbarViewController:
             self.toolbarViewController = viewController
             self.toolbarViewController.viewModel = ToolbarViewModel(model: webState)
