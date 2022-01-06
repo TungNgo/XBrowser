@@ -8,10 +8,10 @@
 import Foundation
 
 class WebStateModel {
-  static let shared = WebStateModel()
-
-  @Published var canGoBack = false
-  @Published var canGoForward = false
-  @Published var submittedUrl: String?
-  @Published var currentUrl: String?
+    static let shared = WebStateModel()
+    
+    @Published var canGoBack = false
+    @Published var canGoForward = false
+    @Published var submittedUrl: String?
+    @Published var currentUrl: String?
 }
