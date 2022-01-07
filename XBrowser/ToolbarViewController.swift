@@ -41,14 +41,11 @@ class ToolbarViewController: UIViewController {
             .assign(to: \.text, on: addressTextField)
             .store(in: &cancellables)
         
-        viewModel.$url
+        viewModel.$faviconURL
             .sink(receiveValue: { [self] result in
-                guard let url = result,
-                      let _URL = URL(string: url)
+                guard let url = result
                 else { return }
-                let hostURL = _URL.host
-                let faviconURL = "http://\(hostURL ?? "")/favicon.ico"
-                self.faviconImageView.loadImage(assetOrUrl: faviconURL)
+                self.faviconImageView.loadImage(assetOrUrl: url)
             })
             .store(in: &cancellables)
     }

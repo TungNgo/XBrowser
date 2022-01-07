@@ -14,6 +14,7 @@ class ToolbarViewModel {
     @Published var backButtonEnabled = false
     @Published var forwardButtonEnabled = false
     @Published var url: String?
+    @Published var faviconURL: String?
     
     var cancellables = Set<AnyCancellable>()
     
@@ -33,6 +34,18 @@ class ToolbarViewModel {
         model.$canGoForward
             .receive(on: RunLoop.main)
             .assign(to: \.forwardButtonEnabled, on: self)
+            .store(in: &cancellables)
+        
+        self.$url
+            .map({ result in
+                guard let url = result,
+                      let _URL = URL(string: url)
+                else { return nil }
+                let hostURL = _URL.host
+                let faviconURL = "http://\(hostURL ?? "")/favicon.ico"
+                return faviconURL
+            })
+            .assign(to: \.faviconURL, on: self)
             .store(in: &cancellables)
     }
 }

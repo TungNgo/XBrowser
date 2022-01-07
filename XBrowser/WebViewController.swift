@@ -22,7 +22,6 @@ class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
     var webView: WKWebView!
     
     var cancellables = Set<AnyCancellable>()
-    private var isTapToolbar: Bool = false
     
     override func loadView() {
         let webConfiguration = WKWebViewConfiguration()
@@ -48,12 +47,11 @@ class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
         viewModel.$url
             .sink(receiveValue: { [self] url in
                 guard let url = url,
-                      let _URL = URL(string: url)
+                      let _URL = URL(string: url),
+                      self.webView.url?.absoluteString != url
                 else { return }
                 let request = URLRequest(url: _URL)
-                if !isTapToolbar {
-                    webView.load(request)
-                }
+                webView.load(request)
             })
             .store(in: &cancellables)
     }
@@ -68,18 +66,15 @@ extension WebViewController: WebViewControllerDelegate {
         guard let url = url,
               let _URL = URL(string: url)
         else { return }
-        isTapToolbar = true
         let request = URLRequest(url: _URL)
         webView.load(request)
     }
     
     func didGoback() {
-        isTapToolbar = true
         webView.goBack()
     }
     
     func didGoForward() {
-        isTapToolbar = true
         webView.goForward()
     }
 }

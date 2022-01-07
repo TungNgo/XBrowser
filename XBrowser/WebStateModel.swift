@@ -10,16 +10,8 @@ import Foundation
 class WebStateModel {
     static let shared = WebStateModel()
     
-    @Published var canGoBack = false {
-        didSet {
-            print("--- canGoBack WebStateModel: \(canGoBack)")
-        }
-    }
-    @Published var canGoForward = false{
-        didSet {
-            print("--- canGoForward WebStateModel: \(canGoForward)")
-        }
-    }
+    @Published var canGoBack = false
+    @Published var canGoForward = false
     @Published var submittedUrl: String?
     @Published var currentUrl: String?
 }
