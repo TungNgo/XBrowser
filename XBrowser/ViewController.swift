@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
   var toolbarViewController: ToolbarViewController!
   var webViewController: WebViewController!
+  @IBOutlet weak var showImageListButton: UIButton!
 
   override func viewDidLoad() {
     super.viewDidLoad()

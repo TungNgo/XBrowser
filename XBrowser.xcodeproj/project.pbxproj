@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F91D096C278D6BDD00477D74 /* ImageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91D096B278D6BDD00477D74 /* ImageListViewController.swift */; };
 		F92DE55A2776D13B007A651C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DE5592776D13B007A651C /* AppDelegate.swift */; };
 		F92DE55C2776D13B007A651C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DE55B2776D13B007A651C /* SceneDelegate.swift */; };
 		F92DE55E2776D13B007A651C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DE55D2776D13B007A651C /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F91D096B278D6BDD00477D74 /* ImageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListViewController.swift; sourceTree = "<group>"; };
 		F92DE5562776D13B007A651C /* XBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F92DE5592776D13B007A651C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F92DE55B2776D13B007A651C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				F9E55CC6277B1788004DDE9D /* WebViewModel.swift */,
 				F9EA0B3A277847E700687296 /* ToolbarViewController.swift */,
 				F9E55CC8277B1CF8004DDE9D /* ToolbarViewModel.swift */,
+				F91D096B278D6BDD00477D74 /* ImageListViewController.swift */,
 			);
 			path = XBrowser;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 				F92DE55A2776D13B007A651C /* AppDelegate.swift in Sources */,
 				F92DE55C2776D13B007A651C /* SceneDelegate.swift in Sources */,
 				F9EA0B3B277847E700687296 /* ToolbarViewController.swift in Sources */,
+				F91D096C278D6BDD00477D74 /* ImageListViewController.swift in Sources */,
 				F92DE56E2776D208007A651C /* WebViewController.swift in Sources */,
 				F9E55CC7277B1788004DDE9D /* WebViewModel.swift in Sources */,
 			);
