@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 
 class WebViewController: UIViewController, WKUIDelegate {
-    
+    @IBOutlet private weak var btnImagesFounded: UIButton!
     var viewModel: WebViewModel!
     
     var webView: WKWebView!
@@ -21,6 +21,7 @@ class WebViewController: UIViewController, WKUIDelegate {
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.uiDelegate = self
+        webView.navigationDelegate = self
         webView.allowsBackForwardNavigationGestures = true
         view = webView
         
@@ -77,6 +78,30 @@ class WebViewController: UIViewController, WKUIDelegate {
      }
      */
     
+}
+
+extension WebViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        let script = """
+                    function getAllImages() {
+                          var sources = [];
+                          for(var i = 0; i< document.images.length; i++) {
+                            sources.push(document.images[i].src)
+                          }
+                          return sources
+                    }
+                    getAllImages()
+                    """
+        webView.evaluateJavaScript(script) { results, error in
+            guard let results = results as? [String] else {
+                return
+            }
+            let imageSrcs = results.filter { src in
+                return src.hasPrefix("http") && (src.hasSuffix("png") || src.hasSuffix("jpg") || src.hasSuffix("jpeg"))
+            }
+            self.viewModel.imageSources = imageSrcs
+        }
+    }
 }
 
 extension NSURLRequest {

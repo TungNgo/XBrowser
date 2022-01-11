@@ -16,4 +16,5 @@ class WebStateModel {
     @Published var currentUrl: String?
     @Published var goBack: Void?
     @Published var goForward: Void?
+    @Published var imageSourcesFounded: [String] = []
 }

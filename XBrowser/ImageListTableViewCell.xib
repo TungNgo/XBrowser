@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageListTableViewCell" rowHeight="85" id="KGk-i7-Jjw" customClass="ImageListTableViewCell" customModule="XBrowser" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="478" height="85"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="478" height="85"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HfF-Bb-874">
+                        <rect key="frame" x="16" y="0.0" width="113.5" height="85"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="HfF-Bb-874" secondAttribute="height" multiplier="4/3" id="lIW-ES-PdV"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fe1-Ez-ZcE">
+                        <rect key="frame" x="137" y="42.5" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Fe1-Ez-ZcE" secondAttribute="trailing" constant="8" id="8j8-Jd-9UD"/>
+                    <constraint firstItem="HfF-Bb-874" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="9Gr-Qq-Cfq"/>
+                    <constraint firstItem="Fe1-Ez-ZcE" firstAttribute="leading" secondItem="HfF-Bb-874" secondAttribute="trailing" constant="7.5" id="Dph-Mn-Lzu"/>
+                    <constraint firstItem="HfF-Bb-874" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="hKz-CR-Yct"/>
+                    <constraint firstAttribute="bottom" secondItem="HfF-Bb-874" secondAttribute="bottom" id="wDq-Bd-pjt"/>
+                    <constraint firstItem="Fe1-Ez-ZcE" firstAttribute="centerY" secondItem="HfF-Bb-874" secondAttribute="centerY" id="zgX-EJ-86a"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="thumbnail" destination="HfF-Bb-874" id="fDd-79-k3e"/>
+                <outlet property="title" destination="Fe1-Ez-ZcE" id="6QD-bs-9Rg"/>
+            </connections>
+            <point key="canvasLocation" x="246.37681159420291" y="84.709821428571431"/>
+        </tableViewCell>
+    </objects>
+</document>

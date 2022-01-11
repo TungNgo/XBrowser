@@ -6,17 +6,39 @@
 //
 
 import UIKit
+import Combine
 
 class ViewController: UIViewController {
+    @IBOutlet private weak var btnImagesFounded: UIButton!
+    
     var webState = WebStateModel.shared
     
     var toolbarViewController: ToolbarViewController!
     var webViewController: WebViewController!
+    private var cancellables = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         webState.submittedUrl = "https://www.apple.com"
+        
+        let imageFounded = webState.$imageSourcesFounded.share()
+        imageFounded.map { $0.count == 0 }
+        .assign(to: \.isHidden, on: self.btnImagesFounded)
+        .store(in: &cancellables)
+        
+        imageFounded.map { sources -> String in
+            let numOfSources = sources.count
+            if numOfSources <= 1 {
+                return "\(numOfSources) image found"
+            }
+            return "\(numOfSources) images found"
+        }
+        .receive(on: RunLoop.main)
+        .sink { [weak self] text in
+            self?.btnImagesFounded.setTitle(text, for: .normal)
+        }
+        .store(in: &cancellables)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -16,6 +16,7 @@ class WebViewModel {
     @Published var url: String?
     @Published var isGoingBack: Void?
     @Published var isGoingForward: Void?
+    @Published var imageSources: [String] = []
     
     var cancellables = Set<AnyCancellable>()
     
@@ -39,6 +40,10 @@ class WebViewModel {
             .assign(to: \.currentUrl, on: model)
             .store(in: &cancellables)
         
+        self.$imageSources
+            .assign(to: \.imageSourcesFounded, on: model)
+            .store(in: &cancellables)
+        
         model.$goBack
             .assign(to: \.isGoingBack, on: self)
             .store(in: &cancellables)
@@ -46,5 +51,7 @@ class WebViewModel {
         model.$goForward
             .assign(to: \.isGoingForward, on: self)
             .store(in: &cancellables)
+        
+        
     }
 }
