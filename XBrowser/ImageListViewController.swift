@@ -2,7 +2,7 @@
 //  ImageListViewController.swift
 //  XBrowser
 //
-//  Created by Lan Thien on 11/01/2022.
+//  Created by tungngo on 1/11/22.
 //
 
 import Combine
