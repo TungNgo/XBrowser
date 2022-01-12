@@ -10,21 +10,31 @@ import UIKit
 
 class ImageListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
-    var webStateModel: WebStateModel!
+    
+    var viewModel: ImageListViewModel!
     private var cancellables = Set<AnyCancellable>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        self.navigationItem.title = "Image List"
+        self.tableView.delegate = self
         self.tableView.register(UINib(nibName: "ImageListTableViewCell", bundle: nil), forCellReuseIdentifier: "ImageListTableViewCell")
-//        webStateModel.$imageSourcesFounded
-//            .sink(receiveValue: self.tableView.items({ tableView, indexPath, element in
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "ImageListTableViewCell", for: indexPath) as! ImageListTableViewCell
-//                return cell
-//            }))
-//            .store(in: &cancellables)
+        viewModel.$imageList
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: self.tableView.items({ tableView, indexPath, element in
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ImageListTableViewCell", for: indexPath) as! ImageListTableViewCell
+                cell.setData(imageUrl: element.0, title: element.1)
+                return cell
+            }))
+            .store(in: &cancellables)
+    }
+}
+
+extension ImageListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
 }
 

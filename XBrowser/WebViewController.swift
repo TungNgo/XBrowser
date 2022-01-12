@@ -77,7 +77,6 @@ class WebViewController: UIViewController, WKUIDelegate {
      // Pass the selected object to the new view controller.
      }
      */
-    
 }
 
 extension WebViewController: WKNavigationDelegate {
@@ -99,9 +98,30 @@ extension WebViewController: WKNavigationDelegate {
             let imageSrcs = results.filter { src in
                 return src.hasPrefix("http") && (src.hasSuffix("png") || src.hasSuffix("jpg") || src.hasSuffix("jpeg"))
             }
-            self.viewModel.imageSources = imageSrcs
+            self.viewModel.imageSources = Array(Set(imageSrcs))
         }
     }
+    
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        self.viewModel.imageSources = []
+    }
+    
+    func webView(_ webView: WKWebView,
+                 decidePolicyFor navigationAction: WKNavigationAction,
+                 decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        guard var url = webView.url?.absoluteString else {
+            decisionHandler(.allow)
+            return
+        }
+        if url.contains(".com/amp/s/") {
+            let components = url.components(separatedBy: "/s/")
+            if let lastComponent = components.last {
+                url = "https://\(lastComponent)"
+            }
+        }
+        viewModel.url = url
+        decisionHandler(.allow)
+     }
 }
 
 extension NSURLRequest {

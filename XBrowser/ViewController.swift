@@ -41,6 +41,12 @@ class ViewController: UIViewController {
         .store(in: &cancellables)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.btnImagesFounded.layer.masksToBounds = true
+        self.btnImagesFounded.layer.cornerRadius = self.btnImagesFounded.bounds.height / 2
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.destination {
         case let viewController as WebViewController:
@@ -49,6 +55,12 @@ class ViewController: UIViewController {
         case let viewController as ToolbarViewController:
             self.toolbarViewController = viewController
             self.toolbarViewController.viewModel = ToolbarViewModel(model: webState)
+//            self.toolbarViewController.delegate = self
+        case let naviVC as UINavigationController:
+            guard let imageListVC = naviVC.viewControllers.first as? ImageListViewController else {
+                return
+            }
+            imageListVC.viewModel = ImageListViewModel(model: webState)
 //            self.toolbarViewController.delegate = self
         default: break
         }
