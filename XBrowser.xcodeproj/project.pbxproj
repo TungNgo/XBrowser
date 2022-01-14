@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F91D096C278D6BDD00477D74 /* ImageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91D096B278D6BDD00477D74 /* ImageListViewController.swift */; };
+		BF2DE855278DD881008A8B86 /* ImageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DE854278DD881008A8B86 /* ImageListViewController.swift */; };
+		BF2DE858278DDA4B008A8B86 /* ImageListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DE856278DDA4B008A8B86 /* ImageListTableViewCell.swift */; };
+		BF2DE859278DDA4B008A8B86 /* ImageListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2DE857278DDA4B008A8B86 /* ImageListTableViewCell.xib */; };
+		BF4939D0278F0B1D00CF3C9A /* ImageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4939CF278F0B1D00CF3C9A /* ImageListViewModel.swift */; };
 		F92DE55A2776D13B007A651C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DE5592776D13B007A651C /* AppDelegate.swift */; };
 		F92DE55C2776D13B007A651C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DE55B2776D13B007A651C /* SceneDelegate.swift */; };
 		F92DE55E2776D13B007A651C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DE55D2776D13B007A651C /* ViewController.swift */; };
@@ -22,7 +25,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F91D096B278D6BDD00477D74 /* ImageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListViewController.swift; sourceTree = "<group>"; };
+		BF2DE854278DD881008A8B86 /* ImageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListViewController.swift; sourceTree = "<group>"; };
+		BF2DE856278DDA4B008A8B86 /* ImageListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListTableViewCell.swift; sourceTree = "<group>"; };
+		BF2DE857278DDA4B008A8B86 /* ImageListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageListTableViewCell.xib; sourceTree = "<group>"; };
+		BF4939CF278F0B1D00CF3C9A /* ImageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListViewModel.swift; sourceTree = "<group>"; };
 		F92DE5562776D13B007A651C /* XBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F92DE5592776D13B007A651C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F92DE55B2776D13B007A651C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,7 +86,10 @@
 				F9E55CC6277B1788004DDE9D /* WebViewModel.swift */,
 				F9EA0B3A277847E700687296 /* ToolbarViewController.swift */,
 				F9E55CC8277B1CF8004DDE9D /* ToolbarViewModel.swift */,
-				F91D096B278D6BDD00477D74 /* ImageListViewController.swift */,
+				BF2DE854278DD881008A8B86 /* ImageListViewController.swift */,
+				BF2DE856278DDA4B008A8B86 /* ImageListTableViewCell.swift */,
+				BF2DE857278DDA4B008A8B86 /* ImageListTableViewCell.xib */,
+				BF4939CF278F0B1D00CF3C9A /* ImageListViewModel.swift */,
 			);
 			path = XBrowser;
 			sourceTree = "<group>";
@@ -144,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F92DE5662776D13C007A651C /* LaunchScreen.storyboard in Resources */,
+				BF2DE859278DDA4B008A8B86 /* ImageListTableViewCell.xib in Resources */,
 				F92DE5632776D13C007A651C /* Assets.xcassets in Resources */,
 				F92DE5612776D13B007A651C /* Main.storyboard in Resources */,
 			);
@@ -157,12 +167,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9E55CC9277B1CF8004DDE9D /* ToolbarViewModel.swift in Sources */,
+				BF4939D0278F0B1D00CF3C9A /* ImageListViewModel.swift in Sources */,
+				BF2DE858278DDA4B008A8B86 /* ImageListTableViewCell.swift in Sources */,
 				F9EA0B3D27784B9000687296 /* WebStateModel.swift in Sources */,
 				F92DE55E2776D13B007A651C /* ViewController.swift in Sources */,
 				F92DE55A2776D13B007A651C /* AppDelegate.swift in Sources */,
 				F92DE55C2776D13B007A651C /* SceneDelegate.swift in Sources */,
 				F9EA0B3B277847E700687296 /* ToolbarViewController.swift in Sources */,
-				F91D096C278D6BDD00477D74 /* ImageListViewController.swift in Sources */,
+				BF2DE855278DD881008A8B86 /* ImageListViewController.swift in Sources */,
 				F92DE56E2776D208007A651C /* WebViewController.swift in Sources */,
 				F9E55CC7277B1788004DDE9D /* WebViewModel.swift in Sources */,
 			);
