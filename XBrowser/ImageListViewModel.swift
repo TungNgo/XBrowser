@@ -24,7 +24,7 @@ class ImageListViewModel {
         model.$imageSourcesFounded
             .sink { [weak self] imageUrls in
                 let numOfImageUrl = imageUrls.count
-                self?.imageList = Array(repeating: (nil, "?kB", ""), count: numOfImageUrl)
+                self?.imageList = Array(repeating: (nil, "?KB", ""), count: numOfImageUrl)
                 for index in 0..<numOfImageUrl {
                     self?.loadImageGroup.enter()
                     self?.loadImageByURL(imageUrls[index]) { [weak self] (image, size, address) in
@@ -54,15 +54,15 @@ class ImageListViewModel {
     
     func loadImageByURL(_ urlString: String, _ completion: ((UIImage?, String, String) -> Void)?) {
         guard let url = URL(string: urlString) else {
-            completion?(nil, "?kb", urlString)
+            completion?(nil, "?KB", urlString)
             return
         }
         URLSession.shared.dataTask(with: url) { (data, _, _) in
             guard let data = data else {
-                completion?(nil, "?kb", urlString)
+                completion?(nil, "?KB", urlString)
                 return
             }
-            completion?(UIImage(data: data), String(format: "%0.2fkB", Double(data.count) / 1000.0), urlString)
+            completion?(UIImage(data: data), String(format: "%0.2fKB", Double(data.count) / 1000.0), urlString)
         }.resume()
         
     }

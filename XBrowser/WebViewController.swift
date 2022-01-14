@@ -83,11 +83,24 @@ extension WebViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         let script = """
                     function getAllImages() {
-                          var sources = [];
-                          for(var i = 0; i< document.images.length; i++) {
-                            sources.push(document.images[i].src)
-                          }
-                          return sources
+                        var srcList = [];
+                        var images = document.images;
+                        for(var i = 0; i < images.length; i++) {
+                            srcList.push(images[i].src);
+                        }
+                        const figures = document.getElementsByTagName('figure');
+                        for(var i = 0; i < figures.length; i++) {
+                            const style = window.getComputedStyle(figures[i], false);
+                            const bi = style.backgroundImage.slice(4, -1).replace(/"/g, "");
+                            srcList.push(bi);
+                        }
+                        const divs = document.getElementsByTagName('div')
+                        for(var i = 0; i < divs.length; i++) {
+                            const style = window.getComputedStyle(divs[i], false);
+                            const bi = style.backgroundImage.slice(4, -1).replace(/"/g, "");
+                            srcList.push(bi);
+                        }
+                        return srcList;
                     }
                     getAllImages()
                     """
